@@ -3,8 +3,10 @@ module CzPayrollee5
     def self.collect_pending_articles(source_concepts)
       source_concepts_copy = source_concepts.dup
 
-      pending_articles = source_concepts_copy.inject([]) do |agr, term_key, term_concept|
-        term_pending = term_concept.pending_articles
+      pending_articles = source_concepts_copy.inject([]) do |agr, term_pair|
+        term_key = term_pair.first
+        term_con = term_pair.last
+        term_pending = term_con.pending_articles
         agr.concat(self.collect_pending_deep(term_key, term_pending))
       end
       pending_unique = pending_articles.uniq
@@ -26,16 +28,24 @@ module CzPayrollee5
     def self.collect_pendings_collection(collected_concepts)
       empty_collection = {}
 
-      final_collection = collected_concepts.inject(empty_collection) do |agr, c, p|
-        merge_collection = Hash.new([c, self.collect_all_pending_articles(agr, c, p, collected_concepts)])
-        agr.merge(merge_collection) {|key, old_val, new_val| new_val}
+      final_collection = collected_concepts.inject(empty_collection) do |agr, concept_pair|
+        concept_code = concept_pair.first
+        concept_pend = concept_pair.last
+        collected_pendings = self.collect_all_pending_articles(agr,
+            concept_code, concept_pend, collected_concepts)
+        merge_to_aggregates(agr, concept_code, collected_pendings)
       end
     end
 
+    def self.merge_to_aggregates(aggregates_concepts, concept_code, collected_pendings)
+      merge_collection = Hash[concept_code, collected_pendings.uniq]
+      aggregates_concepts.merge(merge_collection) { |key, old_val, new_val| new_val }
+    end
+
     # return PayrollArticle[]
-    def self.collect_all_pending_articles(collected_aggregates, concept_code, article, collected_concepts)
-      collected_pendings = pending_articles.inject([]) do |agr, x|
-        agr.concat(self.collect_all_pendings_deep(agr, x, collected_concepts))
+    def self.collect_all_pending_articles(collected_aggregates, concept_code, pending_articles, collected_concepts)
+      collected_pendings = pending_articles.inject([]) do |agr, article|
+        agr.concat(self.collect_all_pendings_deep(agr, article, collected_concepts))
       end
     end
 
@@ -48,21 +58,20 @@ module CzPayrollee5
     end
 
     def self.get_pendings_from_aggregates(collected_aggregates, article)
-      collected_pendings = collected_aggregates.select {|x| x.code == article.code}
-      return nil if collected_pendings.count == 0
-      collected_pendings.dup
+      pendings_articles_array = Array(collected_aggregates[article.concept_code])
+      return nil if pendings_articles_array.count == 0
+      pendings_articles_array.dup
     end
 
     def self.collect_pendings_for_concept(collected_concepts, article)
-      articles_pendings_key_value = collected_concepts.select {|key, _| key == article.concept_code}
-      articles_pendings_array = articles_pendings_key_value.map {|val| val.last}
+      pendings_articles_array = Array(collected_concepts[article.concept_code])
     end
 
     def self.get_pendings_from_concepts(article, collected_concepts)
-      concepts_pendings = self.collect_pendings_for_concept(collected_concepts, article)
+      pendings_articles_source = self.collect_pendings_for_concept(collected_concepts, article)
 
-      pendings_articles = concepts_pendings.inject([article]) do |agr, x|
-        arg.concat(self.collect_all_pendings_deep(agr, x, collected_concepts))
+      collected_pendings_articles = pendings_articles_source.inject([article]) do |agr, article_source|
+        agr.concat(self.collect_all_pendings_deep(agr, article_source, collected_concepts))
       end
     end
 
