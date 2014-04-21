@@ -42,6 +42,8 @@ module CzPayrollee5
       last_token = @last_token
 
       factor_symbol = ArticleConstants.REF_EMPLOYMENT_TERM
+      # add convert function from string, date
+      # add convert function from uint, TypeContract
       factor_values = {
           start_date: date_start,
           end_date: date_end,
