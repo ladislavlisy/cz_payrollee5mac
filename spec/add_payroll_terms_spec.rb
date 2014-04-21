@@ -7,11 +7,16 @@ describe 'prepare payroll calculation' do
 
   it 'should add contract' do
 
-    payroll_setup = PayrollSetup.new
-    payroll_setup.init_articles_and_concepts
+    payroll_setup = PayrollSetup.create
 
-    init_specs = Hash.new
+    payroll_period = PayrollPeriod.new(2014, 1, 'January 2014')
 
-    true.should == false
+    payroll_calc = PayrollCalculation.
+        create_payroll(payroll_period, payroll_setup).
+        add_contract_group(TypeContract.EMPLOYMENT, nil, nil)
+
+    payroll_eval = payroll_calc.last_token
+
+    payroll_eval.code.should == ArticleConstants.REF_EMPLOYMENT_TERM.code
   end
 end

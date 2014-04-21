@@ -64,11 +64,6 @@ module CzPayrollee5
       related_map = ArticleCollector.collect_related_collection(pending_map)
 
       update_related_articles(related_map)
-
-      RelatedArticlesLogger.log_models(models, 'concept_related')
-
-      ConceptsLogger.log_models(models, 'concept_definitions')
-
     end
 
     def update_related_articles(related_map)
@@ -85,6 +80,12 @@ module CzPayrollee5
           concept_val.set_related_articles([])
         end
       end
+    end
+
+    def log_concept_models
+      RelatedArticlesLogger.log_models(models, 'concept_related')
+
+      ConceptsLogger.log_models(models, 'concept_definitions')
     end
 
     def load_payroll_concepts

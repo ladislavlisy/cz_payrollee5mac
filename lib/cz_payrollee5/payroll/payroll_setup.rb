@@ -2,6 +2,12 @@ module CzPayrollee5
   class PayrollSetup
     attr_reader :articles_collection, :concepts_collection
 
+    def self.create
+      instance = PayrollSetup.new
+      instance.init_articles_and_concepts
+      return instance
+    end
+
     def initialize
       @articles_collection = ArticleCollection.new
       @concepts_collection = ConceptCollection.new

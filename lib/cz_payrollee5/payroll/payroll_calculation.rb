@@ -1,48 +1,83 @@
 module CzPayrollee5
   class PayrollCalculation
-    attr_reader :period, :setup, :specs, :results
-    attr_reader :last_term, :last_group
+    attr_reader :period, :factors, :last_token
+    attr_reader :config, :results, :last_party
 
-    def initialize(period, setup, specs, results, last_group, last_term)
+    def initialize(period, config, factors, results, last_party, last_token)
       @period = period
-      @setup = setup
-      @specs = specs
+      @config = config
+      @factors = factors
       @results = results
-      @last_group = last_group
-      @last_term = last_term
+      @last_party = last_party
+      @last_token = last_token
     end
 
-    def self.create_payroll(period, setup)
-      specs = Hash.new
+    def self.create_payroll(period, config)
+      factors = Hash.new
       results = Hash.new
-      last_group = TermGroup.new(0, 0, 0)
-      last_term = TermOrder.new(TermGroup.new(0, 0, 0), 0, 0)
+      last_party = TermParty.get_empty
+      last_token = TermOrder.get_empty
 
-      PayrollCalculation.new(period, setup, specs, result, last_group, last_term)
+      PayrollCalculation.new(period, config, factors, results, last_party, last_token)
     end
 
-    def add_contract_group
-      specs = @specs
-      results = @results
-      last_group = @last_group
-      last_term = @last_term
+    # ADD contract PayrollConcept into factors - EmploymentTermArticle
+    #
+    # ==== Attributes
+    #
+    # *+type+ - Type of Contract (Employment)
+    #
+    # *+date_start+ - date of start of employment
+    #
+    # *+date_end+ - date of end of employment
+    #
+    # ==== Returns
+    #
+    # *+PayrollCalculation.new
+    #
+    def add_contract_party(type, date_start, date_end)
+      init_factors = @factors
+      init_results = @results
+      last_party = @last_token
+      last_token = @last_token
 
-      PayrollCalculation.new(@period, @setup, specs, results, last_group, last_term)
+      factor_symbol = ArticleConstants.REF_EMPLOYMENT_TERM
+      factor_values = {
+          start_date: date_start,
+          end_date: date_end,
+          contract_type: type
+      }
+      party_current = last_party.get_no_contract
+
+      next_returns = EvalFactDictFactory.
+          add_factor_by_symbol(init_factors,
+                               party_current,
+                               factor_symbol,
+                               factor_values,
+                               config)
+
+      next_factors = next_returns.last
+
+      next_token = next_returns.first
+
+      next_party = next_token.get_new_contract_party(next_token.code_order)
+
+      PayrollCalculation.new(@period, @config, next_factors, init_results, next_party, next_token)
     end
 
-    def add_position_group
+    def add_position_party
 
     end
 
-    def add_within_contract_group
+    def add_within_contract_party
 
     end
 
-    def add_within_position_group
+    def add_within_position_party
 
     end
 
-    def add_without_group
+    def add_partyless
 
     end
 

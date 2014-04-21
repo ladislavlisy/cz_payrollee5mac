@@ -1,7 +1,7 @@
 require "cz_payrollee5/version"
 
 require 'cz_payrollee5/core_items/payroll_period'
-require 'cz_payrollee5/core_items/term_group'
+require 'cz_payrollee5/core_items/term_party'
 require 'cz_payrollee5/core_items/term_order'
 require 'cz_payrollee5/core_items/term_comparator'
 require 'cz_payrollee5/core_items/symbolic'
@@ -28,6 +28,10 @@ require 'cz_payrollee5/payroll/article_collection'
 require 'cz_payrollee5/payroll/concept_factory'
 require 'cz_payrollee5/payroll/concept_collection'
 require 'cz_payrollee5/payroll/payroll_setup'
+require 'cz_payrollee5/payroll_items/type_contract'
+require 'cz_payrollee5/payroll/eval_fact_pair_factory'
+require 'cz_payrollee5/payroll/eval_fact_dict_factory'
+require 'cz_payrollee5/payroll/payroll_calculation'
 require 'cz_payrollee5/payroll_libs/concepts_logger'
 require 'cz_payrollee5/payroll_libs/related_articles_logger'
 
