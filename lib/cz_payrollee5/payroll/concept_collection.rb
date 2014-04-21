@@ -58,11 +58,20 @@ module CzPayrollee5
       Hash[concepts_with_pendings.select {|x| x.last.count != 0}]
     end
 
-    def init_pending_articles
+    def init_related_articles
       pending_map = models_to_pendings
 
       related_map = ArticleCollector.collect_related_collection(pending_map)
 
+      update_related_articles(related_map)
+
+      RelatedArticlesLogger.log_models(models, 'concept_related')
+
+      ConceptsLogger.log_models(models, 'concept_definitions')
+
+    end
+
+    def update_related_articles(related_map)
       models.each do |concept_key, concept_val|
         related_array = Array(related_map[concept_key])
 
@@ -76,11 +85,6 @@ module CzPayrollee5
           concept_val.set_related_articles([])
         end
       end
-
-      RelatedArticlesLogger.log_models(models, 'concept_related')
-
-      ConceptsLogger.log_models(models, 'concept_definitions')
-
     end
 
     def load_payroll_concepts

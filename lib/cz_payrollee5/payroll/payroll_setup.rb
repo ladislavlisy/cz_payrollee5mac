@@ -130,7 +130,7 @@ module CzPayrollee5
       init_articles
       init_concepts
 
-      concepts_collection.init_pending_articles
+      concepts_collection.init_related_articles
     end
   end
 end
