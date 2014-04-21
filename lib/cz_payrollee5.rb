@@ -28,6 +28,8 @@ require 'cz_payrollee5/payroll/article_collection'
 require 'cz_payrollee5/payroll/concept_factory'
 require 'cz_payrollee5/payroll/concept_collection'
 require 'cz_payrollee5/payroll/payroll_setup'
+require 'cz_payrollee5/payroll_libs/concepts_logger'
+require 'cz_payrollee5/payroll_libs/related_articles_logger'
 
 module CzPayrollee5
   # Your code goes here...

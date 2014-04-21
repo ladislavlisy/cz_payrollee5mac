@@ -1,11 +1,11 @@
 module CzPayrollee5
   class PayrollConcept < Symbolic
-    attr_reader :article_code, :collected_pending_articles
+    attr_reader :article_code, :related_articles
 
     def initialize(concept_symbol, article_code)
       super(concept_symbol.code, concept_symbol.name)
       @article_code = article_code
-      @collected_pending_articles = nil
+      @related_articles = nil
     end
 
     def init_code(article_code)
@@ -16,8 +16,8 @@ module CzPayrollee5
       name
     end
 
-    def set_pending_articles(articles)
-      @collected_pending_articles = articles.dup
+    def set_related_articles(articles)
+      @related_articles = articles.dup
     end
 
     def pending_articles
@@ -41,9 +41,9 @@ module CzPayrollee5
     end
 
     def <=>(concept_other)
-      if pending_articles_for_code?(collected_pending_articles, concept_other.article_code)
+      if related_articles_for_code?(related_articles, concept_other.article_code)
         return 1
-      elsif pending_articles_for_code?(concept_other.collected_pending_articles, article_code)
+      elsif related_articles_for_code?(concept_other.related_articles, article_code)
         return -1
       elsif summary_articles_for_code?(summary_articles, concept_other.article_code)
         return -1
@@ -56,7 +56,7 @@ module CzPayrollee5
       end
     end
 
-    def count_pending_articles(articles, code)
+    def count_related_articles(articles, code)
       articles.count {|x| x.code=code}
     end
 
@@ -64,8 +64,8 @@ module CzPayrollee5
       articles.count {|x| x.code=code}
     end
 
-    def pending_articles_for_code?(articles, code)
-      count_pending_articles(articles, code) != 0
+    def related_articles_for_code?(articles, code)
+      count_related_articles(articles, code) != 0
     end
 
     def summary_articles_for_code?(articles, code)

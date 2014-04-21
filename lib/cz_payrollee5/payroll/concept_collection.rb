@@ -1,5 +1,3 @@
-require 'logger'
-
 module CzPayrollee5
   class ConceptCollection
     attr_reader :models
@@ -39,91 +37,50 @@ module CzPayrollee5
       return empty_concept
     end
 
-    def collect_concepts_with_pendings
+    # Map models: Hash of concepts to Hash of pendings
+    #
+    # - from [code:uint, concept:PayrollConcept]
+    #
+    # - to Hash [code:uint, pendings:Array:PayrollArticle]
+    #
+    # ==== Attributes
+    #
+    # * +models+ - Hash [concept_code:uint, concept:PayrollConcept]
+    #
+    # ==== Returns
+    #
+    # * +pendings+ - Hash [concept_code:uint, pendings:Array:PayrollArticle]
+    #
+    def models_to_pendings
       concepts_with_pendings = models.map do |code, concept|
         [code, concept.pending_articles]
       end
-      Hash.new(concepts_with_pendings.select {|x| x.last.count != 0})
+      Hash[concepts_with_pendings.select {|x| x.last.count != 0}]
     end
 
     def init_pending_articles
-      concepts_with_pendings = collect_concepts_with_pendings
+      pending_map = models_to_pendings
 
-      pendings_art_collected = ArticleCollector.collect_pendings_collection(concepts_with_pendings)
+      related_map = ArticleCollector.collect_related_collection(pending_map)
 
       models.each do |concept_key, concept_val|
-        concept_pendings_key_value = pendings_art_collected.select {|key, val| key == concept_key}
+        related_array = Array(related_map[concept_key])
 
-        concept_pendings_array = concept_pendings_key_value.map {|val| val.last}
+        related_count = related_array.count
 
-        concept_pendings_count = concept_pendings_array.count
+        if related_count != 0
+          article_related = related_array
 
-        if concept_pendings_count != 0
-          article_pendings = concept_pendings_array.first
-
-          concept_val.set_pending_articles(article_pendings)
+          concept_val.set_related_articles(article_related)
         else
-          concept_val.set_pending_articles([])
+          concept_val.set_related_articles([])
         end
       end
 
-      log_concepts_info
+      RelatedArticlesLogger.log_models(models, 'concept_related')
 
-    end
+      ConceptsLogger.log_models(models, 'concept_definitions')
 
-    def log_concepts_info
-      log = Logger.new('concept_definitions.txt')
-      log.level = Logger::INFO
-
-      models.each do |concept_key, concept_val|
-        line_definition = log_concept_info(concept_val)
-
-        log.info("#{line_definition}")
-      end
-    end
-
-    def log_concept_info(concept_val)
-      line_definition = "#{concept_val.description}\t#{concept_val.calc_category_text}\t"
-
-      line_definition += log_pending_articles_info(concept_val.pending_articles)
-
-      line_definition += log_summary_articles_info(concept_val.summary_articles)
-
-      line_definition += log_spec_values_info(concept_val.spec_values)
-    end
-
-    def log_spec_values_info(spec_values)
-      spec_values.join(', ')
-    end
-
-    def log_pending_articles_info(pending_articles)
-      line_definition = ''
-
-      pending_articles_count = pending_articles.count
-
-      pending_articles.each do |article|
-        line_definition += "#{article.description}\t"
-      end
-
-      pending_articles_count.upto(5) do
-        line_definition += "\t"
-      end
-      line_definition
-    end
-
-    def log_summary_articles_info(summary_articles)
-      line_definition = ''
-
-      summary_articles_count = summary_articles.count
-
-      summary_articles.each do |article|
-        line_definition += "#{article.description}\t"
-      end
-
-      summary_articles_count.upto(1) do
-        line_definition += "\t"
-      end
-      line_definition
     end
 
     def load_payroll_concepts

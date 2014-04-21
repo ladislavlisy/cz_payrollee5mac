@@ -20,7 +20,7 @@ module CzPayrollee5
     end
 
     def concept_description
-      concept.description
+      concept.name
     end
 
     def insurance_health?
