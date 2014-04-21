@@ -101,7 +101,7 @@ module CzPayrollee5
     #
     def self.collect_all_related_articles(related_map, concept_code, concept_pend, pending_map)
       concept_related = concept_pend.inject([]) do |agr, article|
-        agr.concat(self.collect_deep_related_articles(agr, article, pending_map))
+        agr.concat(self.collect_deep_related_articles(related_map, article, pending_map))
       end
     end
 
@@ -127,8 +127,8 @@ module CzPayrollee5
     end
 
     def self.find_result_in_related(related_map, article)
+      return nil if related_map.has_key?(article.concept_code) == false
       article_related = Array(related_map[article.concept_code])
-      return nil if article_related.count == 0
       article_related.dup
     end
 
