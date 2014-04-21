@@ -13,7 +13,7 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_group(TypeContract.EMPLOYMENT, nil, nil)
+        add_contract_party(TypeContract.EMPLOYMENT, nil, nil)
 
     payroll_eval = payroll_calc.last_token
 
