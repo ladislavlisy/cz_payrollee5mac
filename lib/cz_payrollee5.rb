@@ -33,6 +33,7 @@ require 'cz_payrollee5/payroll_libs/concepts_logger'
 require 'cz_payrollee5/payroll_libs/related_articles_logger'
 require 'cz_payrollee5/payroll/payroll_setup'
 require 'cz_payrollee5/payroll_items/type_contract'
+require 'cz_payrollee5/payroll_items/type_schedule'
 require 'cz_payrollee5/payroll/payroll_calculation'
 
 module CzPayrollee5

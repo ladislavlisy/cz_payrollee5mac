@@ -21,12 +21,32 @@ module CzPayrollee5
       @period_base = period_base
     end
 
-    def get_no_contract
+    def get_no_contract_party
       TermParty.new(self.UNKNOWN_CONTRACT, self.UNKNOWN_POSITION, period_base)
     end
 
-    def get_no_position
+    def get_no_position_party
       TermParty.new(contract_order, self.UNKNOWN_POSITION, period_base)
+    end
+
+    def get_contract_party
+      TermParty.new(contract_order, self.UNKNOWN_POSITION, self.CURRENT_B_PERIOD)
+    end
+
+    def get_new_contract_party(order)
+      TermParty.new(order, self.UNKNOWN_POSITION, self.CURRENT_B_PERIOD)
+    end
+
+    def get_position_party
+      TermParty.new(contract_order, position_order, self.CURRENT_B_PERIOD)
+    end
+
+    def get_new_position_party(order)
+      TermParty.new(contract_order, order, self.CURRENT_B_PERIOD)
+    end
+
+    def get_party
+      TermParty.new(contract_order, position_order, period_base)
     end
 
     def ==(other)

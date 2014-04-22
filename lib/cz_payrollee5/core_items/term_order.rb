@@ -20,26 +20,6 @@ module CzPayrollee5
       TermOrder.new(TermParty.get_empty, self.UNKNOWN_CODE, self.UNKNOWN_ORDER)
     end
 
-    def get_contract_party
-      TermParty.new(contract_order, self.UNKNOWN_POSITION, self.CURRENT_B_PERIOD)
-    end
-
-    def get_new_contract_party(order)
-      TermParty.new(order, self.UNKNOWN_POSITION, self.CURRENT_B_PERIOD)
-    end
-
-    def get_position_party
-      TermParty.new(contract_order, position_order, self.CURRENT_B_PERIOD)
-    end
-
-    def get_new_position_party(order)
-      TermParty.new(contract_order, order, self.CURRENT_B_PERIOD)
-    end
-
-    def get_party
-      TermParty.new(contract_order, position_order, period_base)
-    end
-
     def ==(other)
       super.==(other) && @code == other.code && @code_order == other.code_order
     end

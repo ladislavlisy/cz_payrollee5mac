@@ -64,6 +64,8 @@ module CzPayrollee5
       related_map = ArticleCollector.collect_related_collection(pending_map)
 
       update_related_articles(related_map)
+
+      # log_concept_models
     end
 
     def update_related_articles(related_map)

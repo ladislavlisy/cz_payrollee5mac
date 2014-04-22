@@ -1,15 +1,15 @@
 require 'active_support/core_ext/class/attribute_accessors'
 
 module CzPayrollee5
-  class TypeContract
-    cattr_reader :EMPLOYMENT
+  class TypeSchedule
+    cattr_reader :UNIFORM_WEEK
 
-    @@EMPLOYMENT  = 1
+    @@UNIFORM_WEEK  = 1
 
     def self.to_s(number_value)
       case number_value
-        when TypeContract.EMPLOYMENT
-          :EMPLOYMENT.id2name
+        when TypeContract.UNIFORM_WEEK
+          :UNIFORM_WEEK.id2name
         else
           'unknown'
       end
