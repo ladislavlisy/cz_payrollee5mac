@@ -21,27 +21,27 @@ module CzPayrollee5
     end
 
     def ==(other)
-      super.==(other) && @code == other.code && @code_order == other.code_order
+      super(other) && @code == other.code && @code_order == other.code_order
     end
 
     def <=>(other)
-      if super.==(other)
+      if super(other)==0
         if @code == other.code
           @code_order <=> other.code_order
         else
           @code <=> other.code
         end
       else
-        super.<=>(other)
+        super(other)
       end
     end
 
     def eql?(other)
-      super.==(other) && @code == other.code && @code_order == other.code_order
+      super(other) && @code == other.code && @code_order == other.code_order
     end
 
     def hash
-      group_int = super.hash
+      group_int = super
       code_int = @code.hash
       code_order_int = @code_order.hash
       group_int ^ code_int ^ code_order_int

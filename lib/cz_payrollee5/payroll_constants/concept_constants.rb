@@ -18,8 +18,8 @@ module CzPayrollee5
     cattr_reader :REF_INSURANCE_HEALTH
     cattr_reader :REF_INSURANCE_SOCIAL_BASE
     cattr_reader :REF_INSURANCE_SOCIAL
-    cattr_reader :REF_SAVING_PENSION_BASE
-    cattr_reader :REF_SAVING_PENSION
+    cattr_reader :REF_SAVINGS_PENSION_BASE
+    cattr_reader :REF_SAVINGS_PENSION
     cattr_reader :REF_TAX_INCOME
     cattr_reader :REF_TAX_INCOME_ADVANCE
     cattr_reader :REF_TAX_INCOME_WITHHOLD
@@ -62,8 +62,8 @@ module CzPayrollee5
     @@REF_INSURANCE_HEALTH       = Symbolic.new(ConceptCode.CONCEPT_INSURANCE_HEALTH     , :CONCEPT_INSURANCE_HEALTH.id2name)
     @@REF_INSURANCE_SOCIAL_BASE  = Symbolic.new(ConceptCode.CONCEPT_INSURANCE_SOCIAL_BASE, :CONCEPT_INSURANCE_SOCIAL_BASE.id2name)
     @@REF_INSURANCE_SOCIAL       = Symbolic.new(ConceptCode.CONCEPT_INSURANCE_SOCIAL     , :CONCEPT_INSURANCE_SOCIAL.id2name)
-    @@REF_SAVING_PENSION_BASE    = Symbolic.new(ConceptCode.CONCEPT_SAVING_PENSION_BASE  , :CONCEPT_SAVING_PENSION_BASE.id2name)
-    @@REF_SAVING_PENSION         = Symbolic.new(ConceptCode.CONCEPT_SAVING_PENSION       , :CONCEPT_SAVING_PENSION.id2name)
+    @@REF_SAVINGS_PENSION_BASE   = Symbolic.new(ConceptCode.CONCEPT_SAVINGS_PENSION_BASE , :CONCEPT_SAVINGS_PENSION_BASE.id2name)
+    @@REF_SAVINGS_PENSION        = Symbolic.new(ConceptCode.CONCEPT_SAVINGS_PENSION      , :CONCEPT_SAVINGS_PENSION.id2name)
     @@REF_TAX_INCOME             = Symbolic.new(ConceptCode.CONCEPT_TAX_INCOME           , :CONCEPT_TAX_INCOME.id2name)
     @@REF_TAX_INCOME_ADVANCE     = Symbolic.new(ConceptCode.CONCEPT_TAX_INCOME_ADVANCE   , :CONCEPT_TAX_INCOME_ADVANCE.id2name)
     @@REF_TAX_INCOME_WITHHOLD    = Symbolic.new(ConceptCode.CONCEPT_TAX_INCOME_WITHHOLD  , :CONCEPT_TAX_INCOME_WITHHOLD.id2name)

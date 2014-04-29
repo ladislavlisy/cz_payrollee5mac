@@ -18,8 +18,8 @@ module CzPayrollee5
     cattr_reader :REF_INSURANCE_HEALTH
     cattr_reader :REF_INSURANCE_SOCIAL_BASE
     cattr_reader :REF_INSURANCE_SOCIAL
-    cattr_reader :REF_SAVING_PENSION_BASE
-    cattr_reader :REF_SAVING_PENSION
+    cattr_reader :REF_SAVINGS_PENSION_BASE
+    cattr_reader :REF_SAVINGS_PENSION
     cattr_reader :REF_TAX_INCOME
     cattr_reader :REF_TAX_INCOME_ADVANCE
     cattr_reader :REF_TAX_INCOME_WITHHOLD
@@ -62,8 +62,8 @@ module CzPayrollee5
     @@REF_INSURANCE_HEALTH       = Symbolic.new(ArticleCode.ARTICLE_INSURANCE_HEALTH     , :ARTICLE_INSURANCE_HEALTH.id2name)
     @@REF_INSURANCE_SOCIAL_BASE  = Symbolic.new(ArticleCode.ARTICLE_INSURANCE_SOCIAL_BASE, :ARTICLE_INSURANCE_SOCIAL_BASE.id2name)
     @@REF_INSURANCE_SOCIAL       = Symbolic.new(ArticleCode.ARTICLE_INSURANCE_SOCIAL     , :ARTICLE_INSURANCE_SOCIAL.id2name)
-    @@REF_SAVING_PENSION_BASE    = Symbolic.new(ArticleCode.ARTICLE_SAVING_PENSION_BASE  , :ARTICLE_SAVING_PENSION_BASE.id2name)
-    @@REF_SAVING_PENSION         = Symbolic.new(ArticleCode.ARTICLE_SAVING_PENSION       , :ARTICLE_SAVING_PENSION.id2name)
+    @@REF_SAVINGS_PENSION_BASE   = Symbolic.new(ArticleCode.ARTICLE_SAVINGS_PENSION_BASE , :ARTICLE_SAVINGS_PENSION_BASE.id2name)
+    @@REF_SAVINGS_PENSION        = Symbolic.new(ArticleCode.ARTICLE_SAVINGS_PENSION      , :ARTICLE_SAVINGS_PENSION.id2name)
     @@REF_TAX_INCOME             = Symbolic.new(ArticleCode.ARTICLE_TAX_INCOME           , :ARTICLE_TAX_INCOME.id2name)
     @@REF_TAX_INCOME_ADVANCE     = Symbolic.new(ArticleCode.ARTICLE_TAX_INCOME_ADVANCE   , :ARTICLE_TAX_INCOME_ADVANCE.id2name)
     @@REF_TAX_INCOME_WITHHOLD    = Symbolic.new(ArticleCode.ARTICLE_TAX_INCOME_WITHHOLD  , :ARTICLE_TAX_INCOME_WITHHOLD.id2name)

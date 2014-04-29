@@ -19,7 +19,7 @@ module CzPayrollee5
       concept.code
     end
 
-    def concept_description
+    def concept_name
       concept.name
     end
 

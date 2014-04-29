@@ -6,6 +6,10 @@ module CzPayrollee5
     def self.log_models(models, file_name)
       log = Logger.new("#{file_name}.txt")
       log.level = Logger::INFO
+      original_formatter = Logger::Formatter.new
+      log.formatter = proc { |severity, datetime, prog_name, msg|
+        "%s\n"  % [msg]
+      }
 
       models.each do |concept_key, concept_val|
         line_definition = self.log_concept_info(concept_val)

@@ -1,5 +1,5 @@
 module CzPayrollee5
-  class ArticleCollector
+  class PendingAggregator
     # collect all related pendings articles into collection
     # Hash [concept_code:uint, pendings:Array:PayrollArticle]
     #

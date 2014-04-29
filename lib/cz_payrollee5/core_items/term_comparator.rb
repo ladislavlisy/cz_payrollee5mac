@@ -27,6 +27,7 @@ module CzPayrollee5
      def self.get_first_order_from(sorted_order_collection)
        first_code_order = 1
        first_code_order = sorted_order_collection.first unless sorted_order_collection.first.nil?
+       first_code_order
      end
 
      def self.get_new_order_from(sorted_order_collection)

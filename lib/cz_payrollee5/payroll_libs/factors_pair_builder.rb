@@ -1,5 +1,5 @@
 module CzPayrollee5
-  class EvalFactPairFactory
+  class FactorsPairBuilder
     def self.pair_by_symbol_providing_order(party, article_symbol, code_order, article_values, config)
       concept = self.concept_by_symbol(article_symbol, article_values, config)
 

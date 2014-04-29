@@ -18,8 +18,8 @@ module CzPayrollee5
     cattr_reader :ARTICLE_INSURANCE_HEALTH
     cattr_reader :ARTICLE_INSURANCE_SOCIAL_BASE
     cattr_reader :ARTICLE_INSURANCE_SOCIAL
-    cattr_reader :ARTICLE_SAVING_PENSION_BASE
-    cattr_reader :ARTICLE_SAVING_PENSION
+    cattr_reader :ARTICLE_SAVINGS_PENSION_BASE
+    cattr_reader :ARTICLE_SAVINGS_PENSION
     cattr_reader :ARTICLE_TAX_INCOME
     cattr_reader :ARTICLE_TAX_INCOME_ADVANCE
     cattr_reader :ARTICLE_TAX_INCOME_WITHHOLD
@@ -62,8 +62,8 @@ module CzPayrollee5
     @@ARTICLE_INSURANCE_HEALTH           = 302
     @@ARTICLE_INSURANCE_SOCIAL_BASE      = 303
     @@ARTICLE_INSURANCE_SOCIAL           = 304
-    @@ARTICLE_SAVING_PENSION_BASE        = 305
-    @@ARTICLE_SAVING_PENSION             = 306
+    @@ARTICLE_SAVINGS_PENSION_BASE       = 305
+    @@ARTICLE_SAVINGS_PENSION            = 306
     @@ARTICLE_TAX_INCOME                 = 401
     @@ARTICLE_TAX_INCOME_ADVANCE         = 402
     @@ARTICLE_TAX_INCOME_WITHHOLD        = 403

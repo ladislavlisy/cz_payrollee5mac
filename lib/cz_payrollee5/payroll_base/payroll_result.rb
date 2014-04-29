@@ -8,6 +8,10 @@ module CzPayrollee5
       @concept = concept
     end
 
+    def result_values
+      []
+    end
+
     def summary_for_code?(code)
       summary_codes = @concept.summary_articles.map {|x| x.code}
       summary_codes.include?(code)

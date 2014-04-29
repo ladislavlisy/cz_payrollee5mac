@@ -61,7 +61,7 @@ module CzPayrollee5
     def init_related_articles
       pending_map = models_to_pendings
 
-      related_map = ArticleCollector.collect_related_collection(pending_map)
+      related_map = PendingAggregator.collect_related_collection(pending_map)
 
       update_related_articles(related_map)
 
@@ -81,13 +81,16 @@ module CzPayrollee5
         else
           concept_val.set_related_articles([])
         end
+
+        # log_related_articles
+        ArticlesLogger.log_concept_articles(concept_val, article_related, 'update_related_articles')
       end
     end
 
     def log_concept_models
-      RelatedArticlesLogger.log_models(models, 'concept_related')
-
       ConceptsLogger.log_models(models, 'concept_definitions')
+
+      RelatedLogger.log_models(models, 'related_definitions')
     end
 
     def load_payroll_concepts

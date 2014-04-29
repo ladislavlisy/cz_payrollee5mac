@@ -40,36 +40,23 @@ module CzPayrollee5
       []
     end
 
+    def evaluate(config, token, results)
+    end
+
     def <=>(concept_other)
-      if related_articles_for_code?(related_articles, concept_other.article_code)
-        return 1
-      elsif related_articles_for_code?(concept_other.related_articles, article_code)
-        return -1
-      elsif summary_articles_for_code?(summary_articles, concept_other.article_code)
-        return -1
-      elsif summary_articles_for_code?(concept_other.summary_articles, article_code)
-        return 1
-      elsif calc_category == concept_other.calc_category
-        article_code <=> concept_other.article_code
-      else
-        calc_category <=> concept_other.calc_category
-      end
+      return ConceptComparer.concept_compare(self, concept_other)
     end
 
-    def count_related_articles(articles, code)
-      articles.count {|x| x.code=code}
+    def get_contract_party(fact_token)
+        return nil
     end
 
-    def count_summary_articles(articles, code)
-      articles.count {|x| x.code=code}
+    def get_position_party(fact_token)
+      return nil
     end
 
-    def related_articles_for_code?(articles, code)
-      count_related_articles(articles, code) != 0
-    end
-
-    def summary_articles_for_code?(articles, code)
-      count_summary_articles(articles, code) != 0
+    def get_factor_parties(contracts, positions)
+      return Array(TermParty.get_empty)
     end
   end
 end

@@ -1,9 +1,9 @@
 module CzPayrollee5
-  class SavingPensionConcept < PayrollConcept
+  class SavingsPensionConcept < PayrollConcept
     attr_reader :liability_code
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_SAVING_PENSION, article_code)
+      super(ConceptConstants.REF_SAVINGS_PENSION, article_code)
       init_values(values)
     end
 
@@ -17,7 +17,7 @@ module CzPayrollee5
 
     def pending_articles
       [
-          SavingPensionBaseArticle.new
+          SavingsPensionBaseArticle.new
       ]
     end
 
@@ -31,8 +31,11 @@ module CzPayrollee5
       TypeCategory.CALC_CATEGORY_NETTO
     end
 
-    def evaluate(setup, results)
-       UnknownResult.new(article_code, code, self)
+    def evaluate(config, token, results)
+      result_party = token.get_party
+      result_token = token
+
+      Hash[result_token, UnknownResult.new(article_code, code, self)]
     end
 
     def compute_result_value(setup, results)

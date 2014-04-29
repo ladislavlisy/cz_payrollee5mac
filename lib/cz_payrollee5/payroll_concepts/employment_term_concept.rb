@@ -31,8 +31,15 @@ module CzPayrollee5
       TypeCategory.CALC_CATEGORY_START
     end
 
-    def evaluate(setup, results)
-      UnknownResult.new(article_code, code, self)
+    def get_contract_party(fact_token)
+      fact_token.get_new_contract_party(fact_token.code_order)
+    end
+
+    def evaluate(config, token, results)
+      result_party = token.get_party
+      result_token = token
+
+      Hash[result_token, UnknownResult.new(article_code, code, self)]
     end
 
     def compute_result_value(setup, results)

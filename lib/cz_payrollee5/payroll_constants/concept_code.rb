@@ -18,8 +18,8 @@ module CzPayrollee5
     cattr_reader :CONCEPT_INSURANCE_HEALTH
     cattr_reader :CONCEPT_INSURANCE_SOCIAL_BASE
     cattr_reader :CONCEPT_INSURANCE_SOCIAL
-    cattr_reader :CONCEPT_SAVING_PENSION_BASE
-    cattr_reader :CONCEPT_SAVING_PENSION
+    cattr_reader :CONCEPT_SAVINGS_PENSION_BASE
+    cattr_reader :CONCEPT_SAVINGS_PENSION
     cattr_reader :CONCEPT_TAX_INCOME
     cattr_reader :CONCEPT_TAX_INCOME_ADVANCE
     cattr_reader :CONCEPT_TAX_INCOME_WITHHOLD
@@ -62,8 +62,8 @@ module CzPayrollee5
     @@CONCEPT_INSURANCE_HEALTH       = 30201
     @@CONCEPT_INSURANCE_SOCIAL_BASE  = 30301
     @@CONCEPT_INSURANCE_SOCIAL       = 30401
-    @@CONCEPT_SAVING_PENSION_BASE    = 30501
-    @@CONCEPT_SAVING_PENSION         = 30601
+    @@CONCEPT_SAVINGS_PENSION_BASE   = 30501
+    @@CONCEPT_SAVINGS_PENSION        = 30601
     @@CONCEPT_TAX_INCOME             = 40101
     @@CONCEPT_TAX_INCOME_ADVANCE     = 40201
     @@CONCEPT_TAX_INCOME_WITHHOLD    = 40301
@@ -89,6 +89,99 @@ module CzPayrollee5
     @@CONCEPT_TAX_WITHHOLD           = 44501
     @@CONCEPT_INCOME_GROSS           = 50101
     @@CONCEPT_INCOME_NETTO           = 50201
+
+    def self.to_s(number_value)
+      case number_value
+        when ConceptCode.CONCEPT_UNKNOWN
+          :CONCEPT_UNKNOWN.id2name
+        when ConceptCode.CONCEPT_EMPLOYMENT_TERM
+          :CONCEPT_EMPLOYMENT_TERM.id2name
+        when ConceptCode.CONCEPT_AGREEMENT_WORK_TERM
+          :CONCEPT_AGREEMENT_WORK_TERM.id2name
+        when ConceptCode.CONCEPT_AGREEMENT_TASK_TERM
+          :CONCEPT_AGREEMENT_TASK_TERM.id2name
+        when ConceptCode.CONCEPT_POSITION_TERM
+          :CONCEPT_POSITION_TERM.id2name
+        when ConceptCode.CONCEPT_SCHEDULE_WEEKLY
+          :CONCEPT_SCHEDULE_WEEKLY.id2name
+        when ConceptCode.CONCEPT_SALARY_MONTHLY
+          :CONCEPT_SALARY_MONTHLY.id2name
+        when ConceptCode.CONCEPT_TIMESHEET_SCHEDULE
+          :CONCEPT_TIMESHEET_SCHEDULE.id2name
+        when ConceptCode.CONCEPT_TIMESHEET_WORKING
+          :CONCEPT_TIMESHEET_WORKING.id2name
+        when ConceptCode.CONCEPT_TIMESHEET_ABSENCE
+          :CONCEPT_TIMESHEET_ABSENCE.id2name
+        when ConceptCode.CONCEPT_HOURS_WORKING
+          :CONCEPT_HOURS_WORKING.id2name
+        when ConceptCode.CONCEPT_HOURS_ABSENCE
+          :CONCEPT_HOURS_ABSENCE.id2name
+        when ConceptCode.CONCEPT_INSURANCE_HEALTH_BASE
+          :CONCEPT_INSURANCE_HEALTH_BASE.id2name
+        when ConceptCode.CONCEPT_INSURANCE_HEALTH
+          :CONCEPT_INSURANCE_HEALTH.id2name
+        when ConceptCode.CONCEPT_INSURANCE_SOCIAL_BASE
+          :CONCEPT_INSURANCE_SOCIAL_BASE.id2name
+        when ConceptCode.CONCEPT_INSURANCE_SOCIAL
+          :CONCEPT_INSURANCE_SOCIAL.id2name
+        when ConceptCode.CONCEPT_SAVINGS_PENSION_BASE
+          :CONCEPT_SAVINGS_PENSION_BASE.id2name
+        when ConceptCode.CONCEPT_SAVINGS_PENSION
+          :CONCEPT_SAVINGS_PENSION.id2name
+        when ConceptCode.CONCEPT_TAX_INCOME
+          :CONCEPT_TAX_INCOME.id2name
+        when ConceptCode.CONCEPT_TAX_INCOME_ADVANCE
+          :CONCEPT_TAX_INCOME_ADVANCE.id2name
+        when ConceptCode.CONCEPT_TAX_INCOME_WITHHOLD
+          :CONCEPT_TAX_INCOME_WITHHOLD.id2name
+        when ConceptCode.CONCEPT_TAX_CLAIM_PAYER
+          :CONCEPT_TAX_CLAIM_PAYER.id2name
+        when ConceptCode.CONCEPT_TAX_CLAIM_CHILD
+          :CONCEPT_TAX_CLAIM_CHILD.id2name
+        when ConceptCode.CONCEPT_TAX_CLAIM_DISABILITY
+          :CONCEPT_TAX_CLAIM_DISABILITY.id2name
+        when ConceptCode.CONCEPT_TAX_CLAIM_STUDYING
+          :CONCEPT_TAX_CLAIM_STUDYING.id2name
+        when ConceptCode.CONCEPT_TAX_RELIEF_PAYER
+          :CONCEPT_TAX_RELIEF_PAYER.id2name
+        when ConceptCode.CONCEPT_TAX_RELIEF_CHILD
+          :CONCEPT_TAX_RELIEF_CHILD.id2name
+        when ConceptCode.CONCEPT_TAX_BONUS_CHILD
+          :CONCEPT_TAX_BONUS_CHILD.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE_HEALTH
+          :CONCEPT_TAX_ADVANCE_HEALTH.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE_SOCIAL
+          :CONCEPT_TAX_ADVANCE_SOCIAL.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE_PART
+          :CONCEPT_TAX_ADVANCE_PART.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE_BASE
+          :CONCEPT_TAX_ADVANCE_BASE.id2name
+        when ConceptCode.CONCEPT_TAX_SOLIDARY_BASE
+          :CONCEPT_TAX_SOLIDARY_BASE.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE
+          :CONCEPT_TAX_ADVANCE.id2name
+        when ConceptCode.CONCEPT_TAX_SOLIDARY
+          :CONCEPT_TAX_SOLIDARY.id2name
+        when ConceptCode.CONCEPT_TAX_ADVANCE_FINAL
+          :CONCEPT_TAX_ADVANCE_FINAL.id2name
+        when ConceptCode.CONCEPT_TAX_WITHHOLD_HEALTH
+          :CONCEPT_TAX_WITHHOLD_HEALTH.id2name
+        when ConceptCode.CONCEPT_TAX_WITHHOLD_SOCIAL
+          :CONCEPT_TAX_WITHHOLD_SOCIAL.id2name
+        when ConceptCode.CONCEPT_TAX_WITHHOLD_PART
+          :CONCEPT_TAX_WITHHOLD_PART.id2name
+        when ConceptCode.CONCEPT_TAX_WITHHOLD_BASE
+          :CONCEPT_TAX_WITHHOLD_BASE.id2name
+        when ConceptCode.CONCEPT_TAX_WITHHOLD
+          :CONCEPT_TAX_WITHHOLD.id2name
+        when ConceptCode.CONCEPT_INCOME_GROSS
+          :CONCEPT_INCOME_GROSS.id2name
+        when ConceptCode.CONCEPT_INCOME_NETTO
+          :CONCEPT_INCOME_NETTO.id2name
+        else
+          'unknown'
+      end
+    end
   end
 end
 
