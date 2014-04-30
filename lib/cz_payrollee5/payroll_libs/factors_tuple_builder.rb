@@ -13,11 +13,9 @@ module CzPayrollee5
       return [eval_point, eval_facts]
     end
 
-    def self.ins_factor_by_symbol(init_facts, party, article_symbol, fact_values, config)
-      ins_code_order = TermComparator.get_order(init_facts.keys, party, article_symbol.code)
-
+    def self.ins_factor_by_symbol(init_facts, party, article_symbol, code_order, fact_values, config)
       pair_to_merge = FactorsPairBuilder.pair_by_symbol_providing_order(
-          party, article_symbol, ins_code_order, fact_values, config)
+          party, article_symbol, code_order, fact_values, config)
 
       eval_point = pair_to_merge.first
 
@@ -39,11 +37,9 @@ module CzPayrollee5
       return [eval_point, eval_facts]
     end
 
-    def self.ins_factor_by_code(init_facts, party, article_code, fact_values, config)
-      ins_code_order = TermComparator.get_order(init_facts.keys, party, article_code)
-
+    def self.ins_factor_by_code(init_facts, party, article_code, code_order, fact_values, config)
       pair_to_merge = FactorsPairBuilder.pair_by_code_providing_order(
-          party, article_code, ins_code_order, fact_values, config)
+          party, article_code, code_order, fact_values, config)
 
       eval_point = pair_to_merge.first
 
