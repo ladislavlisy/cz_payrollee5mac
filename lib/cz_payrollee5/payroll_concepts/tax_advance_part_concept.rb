@@ -2,7 +2,7 @@ module CzPayrollee5
   class TaxAdvancePartConcept < PayrollConcept
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_ADVANCE_PART, article_code)
+      super(ConceptConstants::REF_TAX_ADVANCE_PART, article_code)
       init_values(values)
     end
 
@@ -17,7 +17,7 @@ module CzPayrollee5
       [
           TaxAdvanceHealthArticle.new,
           TaxAdvanceSocialArticle.new,
-          TaxIncomeAdvanceArticle.new
+          SubjectsTaxAdvanceArticle.new
       ]
     end
 
@@ -27,7 +27,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_NETTO
+      TypeCategory::CALC_CATEGORY_NETTO
     end
 
     def evaluate(config, token, results)

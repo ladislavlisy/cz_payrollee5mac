@@ -1,7 +1,7 @@
 module CzPayrollee5
   class ScheduleWorkArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_SCHEDULE_WORK, ConceptConstants.REF_SCHEDULE_WEEKLY)
+     super(ArticleConstants::REF_SCHEDULE_WORK, ConceptConstants::REF_SCHEDULE_WEEKLY)
    end
 
    def insurance_health?

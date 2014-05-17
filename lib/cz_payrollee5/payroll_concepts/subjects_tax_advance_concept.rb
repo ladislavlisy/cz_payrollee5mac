@@ -1,8 +1,8 @@
 module CzPayrollee5
-  class TaxWithholdBaseConcept < PayrollConcept
+  class SubjectsTaxAdvanceConcept < PayrollConcept
 
     def initialize(article_code, values)
-      super(ConceptConstants::REF_TAX_WITHHOLD_BASE, article_code)
+      super(ConceptConstants::REF_SUBJECTS_TAX_ADVANCE, article_code)
       init_values(values)
     end
 
@@ -15,12 +15,13 @@ module CzPayrollee5
 
     def pending_articles
       [
-          TaxWithholdPartArticle.new
+          TaxStatementArticle.new,
+          SubjectsTaxArticle.new
       ]
     end
 
     def calc_category
-      TypeCategory::CALC_CATEGORY_NETTO
+      TypeCategory::CALC_CATEGORY_GROSS
     end
 
     def evaluate(config, token, results)

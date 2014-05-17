@@ -1,7 +1,7 @@
 module CzPayrollee5
-  class TaxAdvanceSocialArticle < PayrollArticle
+  class TaxStatementArticle < PayrollArticle
    def initialize
-     super(ArticleConstants::REF_TAX_ADVANCE_SOCIAL, ConceptConstants::REF_TAX_ADVANCE_SOCIAL)
+     super(ArticleConstants::REF_TAX_STATEMENT, ConceptConstants::REF_TAX_STATEMENT)
    end
 
    def insurance_health?

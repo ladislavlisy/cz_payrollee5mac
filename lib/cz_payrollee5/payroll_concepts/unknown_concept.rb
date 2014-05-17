@@ -2,7 +2,7 @@ module CzPayrollee5
   class UnknownConcept < PayrollConcept
 
     def initialize
-      super(ConceptConstants.REF_UNKNOWN, ArticleCode.ARTICLE_UNKNOWN)
+      super(ConceptConstants::REF_UNKNOWN, ArticleCode::ARTICLE_UNKNOWN)
     end
 
     def init_values(values)

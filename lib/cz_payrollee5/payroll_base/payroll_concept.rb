@@ -29,7 +29,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_START
+      TypeCategory::CALC_CATEGORY_START
     end
 
     def calc_category_text

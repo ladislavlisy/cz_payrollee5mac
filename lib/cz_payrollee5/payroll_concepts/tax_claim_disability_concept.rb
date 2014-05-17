@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :relief_level_1_code, :relief_level_2_code, :relief_level_3_code
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_CLAIM_DISABILITY, article_code)
+      super(ConceptConstants::REF_TAX_CLAIM_DISABILITY, article_code)
       init_values(values)
     end
 
@@ -19,7 +19,7 @@ module CzPayrollee5
 
     def pending_articles
       [
-          TaxIncomeArticle.new
+          TaxStatementArticle.new
       ]
     end
 

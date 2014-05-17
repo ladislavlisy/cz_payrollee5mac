@@ -13,12 +13,12 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_party(TypeContract.EMPLOYMENT, nil, nil)
+        add_contract_party(TypeContract::EMPLOYMENT, nil, nil)
 
     payroll_eval = payroll_calc.last_token
     payroll_part = payroll_calc.last_party
 
-    payroll_eval.code.should == ArticleConstants.REF_EMPLOYMENT_TERM.code
+    payroll_eval.code.should == ArticleConstants::REF_EMPLOYMENT_TERM.code
     payroll_part.contract_order.should == 1
     payroll_part.position_order.should == 0
   end
@@ -31,13 +31,13 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_party(TypeContract.EMPLOYMENT, nil, nil).
+        add_contract_party(TypeContract::EMPLOYMENT, nil, nil).
         add_position_party(nil, nil)
 
     payroll_eval = payroll_calc.last_token
     payroll_part = payroll_calc.last_party
 
-    payroll_eval.code.should == ArticleConstants.REF_POSITION_TERM.code
+    payroll_eval.code.should == ArticleConstants::REF_POSITION_TERM.code
     payroll_part.contract_order.should == 1
     payroll_part.position_order.should == 1
   end
@@ -50,7 +50,7 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_party(TypeContract.EMPLOYMENT, nil, nil).
+        add_contract_party(TypeContract::EMPLOYMENT, nil, nil).
         add_position_party(nil, nil).
         add_schedule_into_position(TypeSchedule.UNIFORM_WEEK, 40).
         add_salary_into_position(15000)
@@ -58,7 +58,7 @@ describe 'prepare payroll calculation' do
     payroll_eval = payroll_calc.last_token
     payroll_part = payroll_calc.last_party
 
-    payroll_eval.code.should == ArticleConstants.REF_SALARY_BASE.code
+    payroll_eval.code.should == ArticleConstants::REF_SALARY_BASE.code
     payroll_part.contract_order.should == 1
     payroll_part.position_order.should == 1
 
@@ -72,17 +72,17 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_party(TypeContract.EMPLOYMENT, nil, nil).
+        add_contract_party(TypeContract::EMPLOYMENT, nil, nil).
         add_position_party(nil, nil).
         add_schedule_into_position(TypeSchedule.UNIFORM_WEEK, 40).
         add_salary_into_position(15000).
         add_absence_into_position(0).
-        add_participation_insurance_health(true, true).
+        add_statement_insurance_health(true, true).
         add_employer_insurance_health(true).
-        add_participation_insurance_social(true).
+        add_statement_insurance_social(true).
         add_employer_insurance_social(true).
-        add_participation_savings_pension(false).
-        add_tax_declaration(true, true, 1).
+        add_statement_savings_pension(false).
+        add_tax_statement(true, true, 1).
         add_tax_claim_payer(true).
         add_tax_claim_child(true, false).
         add_tax_claim_disability(false, false, false).
@@ -93,7 +93,7 @@ describe 'prepare payroll calculation' do
     payroll_eval = payroll_calc.last_token
     payroll_part = payroll_calc.last_party
 
-    payroll_eval.code.should == ArticleConstants.REF_INCOME_NETTO.code
+    payroll_eval.code.should == ArticleConstants::REF_INCOME_NETTO.code
     payroll_part.contract_order.should == 0
     payroll_part.position_order.should == 0
   end
@@ -106,17 +106,17 @@ describe 'prepare payroll calculation' do
 
     payroll_calc = PayrollCalculation.
         create_payroll(payroll_period, payroll_setup).
-        add_contract_party(TypeContract.EMPLOYMENT, nil, nil).
+        add_contract_party(TypeContract::EMPLOYMENT, nil, nil).
         add_position_party(nil, nil).
         add_schedule_into_position(TypeSchedule.UNIFORM_WEEK, 40).
         add_salary_into_position(15000).
         add_absence_into_position(0).
-        add_participation_insurance_health(true, true).
+        add_statement_insurance_health(true, true).
         add_employer_insurance_health(true).
-        add_participation_insurance_social(true).
+        add_statement_insurance_social(true).
         add_employer_insurance_social(true).
-        add_participation_savings_pension(false).
-        add_tax_declaration(true, true, 1).
+        add_statement_savings_pension(false).
+        add_tax_statement(true, true, 1).
         add_tax_claim_payer(true).
         add_tax_claim_child(true, false).
         add_tax_claim_disability(false, false, false).
@@ -130,7 +130,7 @@ describe 'prepare payroll calculation' do
     payroll_eval = payroll_calc.last_token
     payroll_part = payroll_calc.last_party
 
-    payroll_eval.code.should == ArticleConstants.REF_INCOME_NETTO.code
+    payroll_eval.code.should == ArticleConstants::REF_INCOME_NETTO.code
     payroll_part.contract_order.should == 0
     payroll_part.position_order.should == 0
 

@@ -1,7 +1,7 @@
 module CzPayrollee5
   class TaxWithholdPartArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_TAX_WITHHOLD_PART, ConceptConstants.REF_TAX_WITHHOLD_PART)
+     super(ArticleConstants::REF_TAX_WITHHOLD_PART, ConceptConstants::REF_TAX_WITHHOLD_PART)
    end
 
    def insurance_health?

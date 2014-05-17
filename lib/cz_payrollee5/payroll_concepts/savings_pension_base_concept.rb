@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :liability_code
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_SAVINGS_PENSION_BASE, article_code)
+      super(ConceptConstants::REF_SAVINGS_PENSION_BASE, article_code)
       init_values(values)
     end
 
@@ -15,8 +15,14 @@ module CzPayrollee5
       %w(liability_code)
     end
 
+    def pending_articles
+      [
+          SubjectsSavPensionArticle.new
+      ]
+    end
+
     def calc_category
-      TypeCategory.CALC_CATEGORY_GROSS
+      TypeCategory::CALC_CATEGORY_GROSS
     end
 
     def evaluate(config, token, results)

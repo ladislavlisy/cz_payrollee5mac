@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :liability_code, :minimum_amount
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_INSURANCE_HEALTH_BASE, article_code)
+      super(ConceptConstants::REF_INSURANCE_HEALTH_BASE, article_code)
       init_values(values)
     end
 
@@ -16,8 +16,14 @@ module CzPayrollee5
       %w(liability_code minimum_amount)
     end
 
+    def pending_articles
+      [
+          SubjectsInsHealthArticle.new
+      ]
+    end
+
     def calc_category
-      TypeCategory.CALC_CATEGORY_GROSS
+      TypeCategory::CALC_CATEGORY_GROSS
     end
 
     def evaluate(config, token, results)

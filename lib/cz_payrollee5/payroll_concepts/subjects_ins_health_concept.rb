@@ -1,32 +1,23 @@
 module CzPayrollee5
-  class TaxIncomeConcept < PayrollConcept
-    attr_reader :liability_code, :residency_code, :statement_code
+  class SubjectsInsHealthConcept < PayrollConcept
+    attr_reader :liability_code, :minimum_amount
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_INCOME, article_code)
+      super(ConceptConstants::REF_SUBJECTS_INS_HEALTH, article_code)
       init_values(values)
     end
 
     def init_values(values)
       @liability_code = ValueExtractor.get_valid_or_zero_int(values, :liability_code)
-      @residency_code = ValueExtractor.get_valid_or_zero_int(values, :residency_code)
-      @statement_code = ValueExtractor.get_valid_or_zero_int(values, :statement_code)
+      @minimum_amount = ValueExtractor.get_valid_or_zero_int(values, :minimum_amount)
     end
 
     def spec_values
-      %w(liability_code residency_code statement_code)
-    end
-
-    def pending_articles
-      [
-          InsuranceHealthArticle.new,
-          InsuranceSocialArticle.new,
-          SavingsPensionArticle.new
-      ]
+      %w(liability_code minimum_amount)
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_GROSS
+      TypeCategory::CALC_CATEGORY_GROSS
     end
 
     def evaluate(config, token, results)

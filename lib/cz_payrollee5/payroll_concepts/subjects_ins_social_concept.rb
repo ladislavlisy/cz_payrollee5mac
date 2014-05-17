@@ -1,26 +1,23 @@
 module CzPayrollee5
-  class TaxIncomeWithholdConcept < PayrollConcept
+  class SubjectsInsSocialConcept < PayrollConcept
+    attr_reader :liability_code, :minimum_amount
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_INCOME_WITHHOLD, article_code)
+      super(ConceptConstants::REF_SUBJECTS_INS_SOCIAL, article_code)
       init_values(values)
     end
 
     def init_values(values)
+      @liability_code = ValueExtractor.get_valid_or_zero_int(values, :liability_code)
+      @minimum_amount = ValueExtractor.get_valid_or_zero_int(values, :minimum_amount)
     end
 
     def spec_values
-      []
-    end
-
-    def pending_articles
-      [
-          TaxIncomeArticle.new
-      ]
+      %w(liability_code minimum_amount)
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_GROSS
+      TypeCategory::CALC_CATEGORY_GROSS
     end
 
     def evaluate(config, token, results)

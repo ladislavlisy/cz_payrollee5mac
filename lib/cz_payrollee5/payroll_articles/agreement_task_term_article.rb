@@ -1,7 +1,7 @@
 module CzPayrollee5
   class AgreementTaskTermArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_AGREEMENT_TASK_TERM, ConceptConstants.REF_AGREEMENT_TASK_TERM)
+     super(ArticleConstants::REF_AGREEMENT_TASK_TERM, ConceptConstants::REF_AGREEMENT_TASK_TERM)
    end
 
    def insurance_health?

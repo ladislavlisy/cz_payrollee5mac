@@ -16,7 +16,7 @@ describe 'Tax base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_TAX_ADVANCE_BASE,
+                                                            ArticleConstants::REF_TAX_ADVANCE_BASE,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last
@@ -35,7 +35,7 @@ describe 'Tax base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_TAX_ADVANCE_BASE,
+                                                            ArticleConstants::REF_TAX_ADVANCE_BASE,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last
@@ -53,7 +53,7 @@ describe 'Tax base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_TAX_ADVANCE,
+                                                            ArticleConstants::REF_TAX_ADVANCE,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last
@@ -70,7 +70,7 @@ describe 'Tax base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_TAX_ADVANCE,
+                                                            ArticleConstants::REF_TAX_ADVANCE,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last
@@ -95,7 +95,7 @@ describe 'Insurance base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_INSURANCE_HEALTH,
+                                                            ArticleConstants::REF_INSURANCE_HEALTH,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last
@@ -112,7 +112,7 @@ describe 'Insurance base rounding up' do
     article_part = TermParty.get_empty
     factor_tuple = FactorsTupleBuilder.add_factor_by_symbol(factors_init,
                                                             article_part,
-                                                            ArticleConstants.REF_INSURANCE_SOCIAL,
+                                                            ArticleConstants::REF_INSURANCE_SOCIAL,
                                                             factors_vals,
                                                             @payroll_config)
     test_facts = factor_tuple.last

@@ -18,8 +18,8 @@ describe 'Payroll Concept Factory' do
     it 'returns code CONCEPT_SALARY_MONTHLY for new Concept' do
       concept_item = ConceptFactory.concept_for(@concept_factor.code, @concept_factor.concept_name, {amount_monthly: 0})
       concept_item.name.should == 'CONCEPT_SALARY_MONTHLY'
-      concept_item.code.should == ConceptCode.CONCEPT_SALARY_MONTHLY
-      concept_item.article_code.should == ArticleCode.ARTICLE_SALARY_BASE
+      concept_item.code.should == ConceptCode::CONCEPT_SALARY_MONTHLY
+      concept_item.article_code.should == ArticleCode::ARTICLE_SALARY_BASE
     end
 
   end
@@ -40,9 +40,9 @@ describe 'Payroll Article Factory' do
 
     it 'returns code ARTICLE_SALARY_BASE for new Article' do
       article_item = ArticleFactory.article_for(@concept_factor.name)
-      article_item.code.should == ArticleCode.ARTICLE_SALARY_BASE
+      article_item.code.should == ArticleCode::ARTICLE_SALARY_BASE
       article_item.name.should == 'ARTICLE_SALARY_BASE'
-      article_item.concept.code.should == ConceptCode.CONCEPT_SALARY_MONTHLY
+      article_item.concept.code.should == ConceptCode::CONCEPT_SALARY_MONTHLY
     end
 
   end

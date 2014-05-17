@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :start_date, :end_date, :contract_type
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_EMPLOYMENT_TERM, article_code)
+      super(ConceptConstants::REF_EMPLOYMENT_TERM, article_code)
       init_values(values)
     end
 
@@ -28,7 +28,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_START
+      TypeCategory::CALC_CATEGORY_START
     end
 
     def get_contract_party(fact_token)

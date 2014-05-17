@@ -5,7 +5,7 @@ module CzPayrollee5
     def initialize
       load_payroll_articles
       @models = Hash.new
-      @models[ArticleCode.ARTICLE_UNKNOWN] = UnknownArticle.new
+      @models[ArticleCode::ARTICLE_UNKNOWN] = UnknownArticle.new
     end
 
     def article_from_models(article_symbol)
@@ -22,7 +22,7 @@ module CzPayrollee5
       if models.include?(article_code)
         base_article = models[article_code]
       else
-        base_article = models[ArticleCode.ARTICLE_UNKNOWN]
+        base_article = models[ArticleCode::ARTICLE_UNKNOWN]
       end
       base_article
     end

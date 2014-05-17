@@ -1,14 +1,16 @@
 module CzPayrollee5
   class TaxClaimChildConcept < PayrollConcept
     attr_reader :relief_code
+    attr_reader :disablement
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_CLAIM_CHILD, article_code)
+      super(ConceptConstants::REF_TAX_CLAIM_CHILD, article_code)
       init_values(values)
     end
 
     def init_values(values)
       @relief_code = ValueExtractor.get_valid_or_zero_int(values, :relief_code)
+      @disablement = ValueExtractor.get_valid_or_zero_int(values, :disablement)
     end
 
     def spec_values
@@ -17,7 +19,7 @@ module CzPayrollee5
 
     def pending_articles
       [
-          TaxIncomeArticle.new
+          TaxStatementArticle.new
       ]
     end
 

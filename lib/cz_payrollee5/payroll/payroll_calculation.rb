@@ -59,7 +59,7 @@ module CzPayrollee5
     # *+PayrollCalculation.new
     #
     def add_contract_party(type, date_start, date_end)
-      factor_symbol = ArticleConstants.REF_EMPLOYMENT_TERM
+      factor_symbol = ArticleConstants::REF_EMPLOYMENT_TERM
 
       factor_values = {
           start_date: date_start,
@@ -70,7 +70,7 @@ module CzPayrollee5
     end
 
     def add_position_party(date_start, date_end)
-      factor_symbol = ArticleConstants.REF_POSITION_TERM
+      factor_symbol = ArticleConstants::REF_POSITION_TERM
 
       factor_values = {
           start_date: date_start,
@@ -81,7 +81,7 @@ module CzPayrollee5
     end
 
     def add_schedule_into_position(type_schedule, hours_weekly)
-      factor_symbol = ArticleConstants.REF_SCHEDULE_WORK
+      factor_symbol = ArticleConstants::REF_SCHEDULE_WORK
 
       factor_values = {
           schedule_type: type_schedule,
@@ -92,7 +92,7 @@ module CzPayrollee5
     end
 
     def add_salary_into_position(amount_salary)
-      factor_symbol = ArticleConstants.REF_SALARY_BASE
+      factor_symbol = ArticleConstants::REF_SALARY_BASE
 
       factor_values = {
           amount_monthly: amount_salary
@@ -101,7 +101,7 @@ module CzPayrollee5
     end
 
     def add_absence_into_position(hours_monthly)
-      factor_symbol = ArticleConstants.REF_HOURS_ABSENCE
+      factor_symbol = ArticleConstants::REF_HOURS_ABSENCE
 
       factor_values = {
           hours_monthly: hours_monthly
@@ -109,8 +109,8 @@ module CzPayrollee5
       add_fact_into_position(factor_symbol, factor_values)
     end
 
-    def add_tax_declaration(liability_code, residency_code, statement_code)
-      factor_symbol = ArticleConstants.REF_TAX_INCOME
+    def add_tax_statement(liability_code, residency_code, statement_code)
+      factor_symbol = ArticleConstants::REF_TAX_STATEMENT
 
       factor_values = {
           liability_code: Values.to_uint(liability_code)
@@ -118,8 +118,8 @@ module CzPayrollee5
       add_fact_into_payroll(factor_symbol, factor_values)
     end
 
-    def add_participation_insurance_health(liability_code, minimum_amount)
-      factor_symbol = ArticleConstants.REF_INSURANCE_HEALTH_BASE
+    def add_statement_insurance_health(liability_code, minimum_amount)
+      factor_symbol = ArticleConstants::REF_INSURANCE_HEALTH_BASE
 
       factor_values = {
           liability_code: Values.to_uint(liability_code),
@@ -128,8 +128,8 @@ module CzPayrollee5
       add_fact_into_contract(factor_symbol, factor_values)
     end
 
-    def add_participation_insurance_social(liability_code)
-      factor_symbol = ArticleConstants.REF_INSURANCE_SOCIAL_BASE
+    def add_statement_insurance_social(liability_code)
+      factor_symbol = ArticleConstants::REF_INSURANCE_SOCIAL_BASE
 
       factor_values = {
           liability_code: Values.to_uint(liability_code)
@@ -137,8 +137,8 @@ module CzPayrollee5
       add_fact_into_contract(factor_symbol, factor_values)
     end
 
-    def add_participation_savings_pension(liability_code)
-      factor_symbol = ArticleConstants.REF_SAVINGS_PENSION_BASE
+    def add_statement_savings_pension(liability_code)
+      factor_symbol = ArticleConstants::REF_SAVINGS_PENSION_BASE
 
       factor_values = {
           liability_code: Values.to_uint(liability_code)
@@ -147,7 +147,7 @@ module CzPayrollee5
     end
 
     def add_tax_claim_payer(relief_code)
-      factor_symbol = ArticleConstants.REF_TAX_CLAIM_PAYER
+      factor_symbol = ArticleConstants::REF_TAX_CLAIM_PAYER
 
       factor_values = {
           relief_code: Values.to_uint(relief_code)
@@ -156,7 +156,7 @@ module CzPayrollee5
     end
 
     def add_tax_claim_child(relief_code, disablement)
-      factor_symbol = ArticleConstants.REF_TAX_CLAIM_CHILD
+      factor_symbol = ArticleConstants::REF_TAX_CLAIM_CHILD
 
       factor_values = {
           relief_code: Values.to_uint(relief_code),
@@ -166,7 +166,7 @@ module CzPayrollee5
     end
 
     def add_tax_claim_disability(relief_level_1_code, relief_level_2_code, relief_level_3_code)
-      factor_symbol = ArticleConstants.REF_TAX_CLAIM_DISABILITY
+      factor_symbol = ArticleConstants::REF_TAX_CLAIM_DISABILITY
 
       factor_values = {
           relief_level_1_code: Values.to_uint(relief_level_1_code),
@@ -178,7 +178,7 @@ module CzPayrollee5
     end
 
     def add_tax_claim_studying(relief_code)
-      factor_symbol = ArticleConstants.REF_TAX_CLAIM_STUDYING
+      factor_symbol = ArticleConstants::REF_TAX_CLAIM_STUDYING
 
       factor_values = {
           relief_code: Values.to_uint(relief_code)
@@ -187,7 +187,7 @@ module CzPayrollee5
     end
 
     def add_employer_insurance_health(liability_code)
-      factor_symbol = ArticleConstants.REF_TAX_ADVANCE_HEALTH
+      factor_symbol = ArticleConstants::REF_TAX_ADVANCE_HEALTH
 
       factor_values = {
           liability_code: Values.to_uint(liability_code)
@@ -196,7 +196,7 @@ module CzPayrollee5
     end
 
     def add_employer_insurance_social(liability_code)
-      factor_symbol = ArticleConstants.REF_TAX_ADVANCE_SOCIAL
+      factor_symbol = ArticleConstants::REF_TAX_ADVANCE_SOCIAL
 
       factor_values = {
           liability_code: Values.to_uint(liability_code)
@@ -205,7 +205,7 @@ module CzPayrollee5
     end
 
     def add_income_gross
-      factor_symbol = ArticleConstants.REF_INCOME_GROSS
+      factor_symbol = ArticleConstants::REF_INCOME_GROSS
 
       factor_values = { }
 
@@ -213,7 +213,7 @@ module CzPayrollee5
     end
 
     def add_income_netto
-      factor_symbol = ArticleConstants.REF_INCOME_NETTO
+      factor_symbol = ArticleConstants::REF_INCOME_NETTO
 
       factor_values = { }
 

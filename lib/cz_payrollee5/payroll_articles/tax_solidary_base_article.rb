@@ -1,7 +1,7 @@
 module CzPayrollee5
   class TaxSolidaryBaseArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_TAX_SOLIDARY_BASE, ConceptConstants.REF_TAX_SOLIDARY_BASE)
+     super(ArticleConstants::REF_TAX_SOLIDARY_BASE, ConceptConstants::REF_TAX_SOLIDARY_BASE)
    end
 
    def insurance_health?

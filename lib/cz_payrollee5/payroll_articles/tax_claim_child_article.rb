@@ -1,7 +1,7 @@
 module CzPayrollee5
   class TaxClaimChildArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_TAX_CLAIM_CHILD, ConceptConstants.REF_TAX_CLAIM_CHILD)
+     super(ArticleConstants::REF_TAX_CLAIM_CHILD, ConceptConstants::REF_TAX_CLAIM_CHILD)
    end
 
    def insurance_health?

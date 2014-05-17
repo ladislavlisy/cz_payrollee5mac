@@ -1,7 +1,7 @@
 module CzPayrollee5
   class IncomeNettoArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_INCOME_NETTO, ConceptConstants.REF_INCOME_NETTO)
+     super(ArticleConstants::REF_INCOME_NETTO, ConceptConstants::REF_INCOME_NETTO)
    end
 
    def insurance_health?

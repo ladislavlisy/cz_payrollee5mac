@@ -1,7 +1,7 @@
 module CzPayrollee5
   class UnknownArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_UNKNOWN, ConceptConstants.REF_UNKNOWN)
+     super(ArticleConstants::REF_UNKNOWN, ConceptConstants::REF_UNKNOWN)
    end
 
    def insurance_health?

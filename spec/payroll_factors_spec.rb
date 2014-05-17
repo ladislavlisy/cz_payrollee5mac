@@ -13,7 +13,7 @@ describe 'Payroll Process Factors' do
   describe 'factor by article working schedule' do
     it 'returns weekly schedule hours 40' do
       article_code_part = TermParty.get_empty
-      article_code_name = ArticleConstants.REF_SCHEDULE_WORK
+      article_code_name = ArticleConstants::REF_SCHEDULE_WORK
       concept_init_hash = {hours_weekly: 40}
       article_fact_pair = FactorsTupleBuilder.add_factor_by_symbol(@factors_queued,
                                                                    article_code_part,
@@ -31,7 +31,7 @@ describe 'Payroll Process Factors' do
   describe 'factor by article base salary' do
     it 'returns monthly amount 15 000 CZK' do
       article_code_part = TermParty.get_empty
-      article_code_name = ArticleConstants.REF_SALARY_BASE
+      article_code_name = ArticleConstants::REF_SALARY_BASE
       concept_init_hash = {amount_monthly: 15000}
       article_fact_pair = FactorsTupleBuilder.add_factor_by_symbol(@factors_queued,
                                                                    article_code_part,
@@ -56,7 +56,7 @@ describe 'Payroll Process Factors' do
     describe 'inserting term and get code_order' do
       it 'returns code_order == 1 at beginning' do
         article_code_part = TermParty.get_empty
-        article_code_name = ArticleConstants.REF_SCHEDULE_WORK
+        article_code_name = ArticleConstants::REF_SCHEDULE_WORK
         concept_init_hash = {amount_monthly:  3000}
         article_fact_pair = FactorsTupleBuilder.ins_factor_by_symbol(@factors_queued,
                                                                      article_code_part,
@@ -101,7 +101,7 @@ describe 'Payroll Process Factors' do
 
       it 'returns code_order == 3 in the middle' do
         article_code_part = TermParty.get_empty
-        article_code_name = ArticleConstants.REF_SCHEDULE_WORK
+        article_code_name = ArticleConstants::REF_SCHEDULE_WORK
         concept_init_hash = {amount_monthly:  5000}
         article_fact_pair = FactorsTupleBuilder.ins_factor_by_symbol(@factors_queued,
                                                                      article_code_part,
@@ -146,7 +146,7 @@ describe 'Payroll Process Factors' do
 
       it 'returns code_order == 6 at the end' do
         article_code_part = TermParty.get_empty
-        article_code_name = ArticleConstants.REF_SCHEDULE_WORK
+        article_code_name = ArticleConstants::REF_SCHEDULE_WORK
         concept_init_hash = {amount_monthly:  3000}
         article_fact_pair = FactorsTupleBuilder.ins_factor_by_symbol(@factors_queued,
                                                                      article_code_part,

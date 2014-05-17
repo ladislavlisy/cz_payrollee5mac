@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :amount_monthly
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_SALARY_MONTHLY, article_code)
+      super(ConceptConstants::REF_SALARY_MONTHLY, article_code)
       init_values(values)
     end
 
@@ -29,7 +29,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_AMOUNT
+      TypeCategory::CALC_CATEGORY_AMOUNT
     end
 
     def evaluate(config, token, results)

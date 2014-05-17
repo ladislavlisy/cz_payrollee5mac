@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :value
 
     def initialize
-      super(ConceptConstants.REF_###, ArticleCode.ARTICLE_UNKNOWN)
+      super(ConceptConstants.REF_###, ArticleCode::ARTICLE_UNKNOWN)
     end
 
     def init_values(values)
@@ -25,7 +25,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_START
+      TypeCategory::CALC_CATEGORY_START
     end
 
     def evaluate(setup, results)

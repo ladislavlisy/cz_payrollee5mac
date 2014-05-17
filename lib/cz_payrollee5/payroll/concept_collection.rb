@@ -5,7 +5,7 @@ module CzPayrollee5
     def initialize
       load_payroll_concepts
       @models = Hash.new
-      @models[ConceptCode.CONCEPT_UNKNOWN] = UnknownConcept.new
+      @models[ConceptCode::CONCEPT_UNKNOWN] = UnknownConcept.new
     end
 
     def article_concept_from_models(article)
@@ -26,7 +26,7 @@ module CzPayrollee5
       if models.include?(concept_code)
         base_concept = models[concept_code]
       else
-        base_concept = models[ConceptConstants.CONCEPT_UNKNOWN]
+        base_concept = models[ConceptCode::CONCEPT_UNKNOWN]
       end
       base_concept
     end

@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :start_date, :end_date
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_POSITION_TERM, article_code)
+      super(ConceptConstants::REF_POSITION_TERM, article_code)
       init_values(values)
     end
 
@@ -23,7 +23,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_TERMS
+      TypeCategory::CALC_CATEGORY_TERMS
     end
 
     def evaluate(config, token, results)

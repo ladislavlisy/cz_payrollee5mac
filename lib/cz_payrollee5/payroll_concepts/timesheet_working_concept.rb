@@ -2,7 +2,7 @@ module CzPayrollee5
   class TimesheetWorkingConcept < PayrollConcept
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TIMESHEET_WORKING, article_code)
+      super(ConceptConstants::REF_TIMESHEET_WORKING, article_code)
       init_values(values)
     end
 
@@ -21,7 +21,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_TIMES
+      TypeCategory::CALC_CATEGORY_TIMES
     end
 
     def evaluate(config, token, results)

@@ -2,7 +2,7 @@ module CzPayrollee5
   class IncomeNettoConcept < PayrollConcept
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_INCOME_NETTO, article_code)
+      super(ConceptConstants::REF_INCOME_NETTO, article_code)
       init_values(values)
     end
 
@@ -24,7 +24,7 @@ module CzPayrollee5
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_FINAL
+      TypeCategory::CALC_CATEGORY_FINAL
     end
 
     def evaluate(config, token, results)

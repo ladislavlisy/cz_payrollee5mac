@@ -2,13 +2,11 @@ require 'active_support/core_ext/class/attribute_accessors'
 
 module CzPayrollee5
   class TypeContract
-    cattr_reader :EMPLOYMENT
-
-    @@EMPLOYMENT  = 1
+    EMPLOYMENT  = 1
 
     def self.to_s(number_value)
       case number_value
-        when TypeContract.EMPLOYMENT
+        when TypeContract::EMPLOYMENT
           :EMPLOYMENT.id2name
         else
           'unknown'

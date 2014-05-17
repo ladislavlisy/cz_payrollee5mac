@@ -1,7 +1,7 @@
 module CzPayrollee5
   class InsuranceSocialBaseArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_INSURANCE_SOCIAL_BASE, ConceptConstants.REF_INSURANCE_SOCIAL_BASE)
+     super(ArticleConstants::REF_INSURANCE_SOCIAL_BASE, ConceptConstants::REF_INSURANCE_SOCIAL_BASE)
    end
 
    def insurance_health?

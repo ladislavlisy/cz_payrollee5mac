@@ -1,7 +1,7 @@
 module CzPayrollee5
   class TimesheetWorkingArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_TIMESHEET_WORKING, ConceptConstants.REF_TIMESHEET_WORKING)
+     super(ArticleConstants::REF_TIMESHEET_WORKING, ConceptConstants::REF_TIMESHEET_WORKING)
    end
 
    def insurance_health?

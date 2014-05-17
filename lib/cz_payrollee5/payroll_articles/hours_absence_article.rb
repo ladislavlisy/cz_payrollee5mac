@@ -1,7 +1,7 @@
 module CzPayrollee5
   class HoursAbsenceArticle < PayrollArticle
    def initialize
-     super(ArticleConstants.REF_HOURS_ABSENCE, ConceptConstants.REF_HOURS_ABSENCE)
+     super(ArticleConstants::REF_HOURS_ABSENCE, ConceptConstants::REF_HOURS_ABSENCE)
    end
 
    def insurance_health?

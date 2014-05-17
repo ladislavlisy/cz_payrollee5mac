@@ -2,7 +2,7 @@ module CzPayrollee5
   class TaxWithholdPartConcept < PayrollConcept
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_TAX_WITHHOLD_PART, article_code)
+      super(ConceptConstants::REF_TAX_WITHHOLD_PART, article_code)
       init_values(values)
     end
 
@@ -17,12 +17,12 @@ module CzPayrollee5
       [
           TaxWithholdHealthArticle.new,
           TaxWithholdSocialArticle.new,
-          TaxIncomeWithholdArticle.new
+          SubjectsTaxWithholdArticle.new
       ]
     end
 
     def calc_category
-      TypeCategory.CALC_CATEGORY_NETTO
+      TypeCategory::CALC_CATEGORY_NETTO
     end
 
     def evaluate(config, token, results)

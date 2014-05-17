@@ -3,7 +3,7 @@ module CzPayrollee5
     attr_reader :schedule_type, :hours_weekly
 
     def initialize(article_code, values)
-      super(ConceptConstants.REF_SCHEDULE_WEEKLY, article_code)
+      super(ConceptConstants::REF_SCHEDULE_WEEKLY, article_code)
       init_values(values)
     end
 
