@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 module CzPayrollee5
   class BigRoundOp
     def self.multiply(op1, op2)

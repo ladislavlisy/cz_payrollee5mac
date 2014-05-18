@@ -46,6 +46,9 @@ require 'cz_payrollee5/payroll/payroll_setup'
 require 'cz_payrollee5/payroll_items/type_contract'
 require 'cz_payrollee5/payroll_items/type_schedule'
 require 'cz_payrollee5/payroll/payroll_calculation'
+require 'cz_payrollee5/payroll_engines/payroll_act_engine'
+require 'cz_payrollee5/payroll_engines/cz_tax_engine_prototype'
+require 'cz_payrollee5/payroll_engines/cz_tax_engine2013'
 
 module CzPayrollee5
   # Your code goes here...
