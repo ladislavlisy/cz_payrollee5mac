@@ -3,14 +3,23 @@ require 'spec_helper'
 require 'cz_payrollee5'
 include CzPayrollee5
 
-describe 'Insurance base rounding up' do
+describe 'INSURANCE_HEALTH_BASE rounding' do
 
   before(:each) do
     @payroll_config = PayrollSetup.create
     @payroll_period = PayrollPeriod.new(2014, 1, 'January 2014')
   end
 
-  it 'Health insurance should be round up to 1 CZK' do
+end
+
+describe 'INSURANCE_HEALTH rounding' do
+
+  before(:each) do
+    @payroll_config = PayrollSetup.create
+    @payroll_period = PayrollPeriod.new(2014, 1, 'January 2014')
+  end
+
+  it 'INSURANCE_HEALTH should be round UP to 1 CZK' do
     factors_init = Hash.new
     factors_vals = {amount: 0}
     article_part = TermParty.get_empty
@@ -26,8 +35,25 @@ describe 'Insurance base rounding up' do
     test_concept.insurance_contribution(@period, 3333, 3333).should == 150
     test_concept.insurance_contribution(@period, 2222, 2222).should == 100
   end
+end
 
-  it 'Social insurance should be round up to 1 CZK' do
+describe 'INSURANCE_SOCIAL_BASE rounding' do
+
+  before(:each) do
+    @payroll_config = PayrollSetup.create
+    @payroll_period = PayrollPeriod.new(2014, 1, 'January 2014')
+  end
+
+end
+
+describe 'INSURANCE_SOCIAL rounding' do
+
+  before(:each) do
+    @payroll_config = PayrollSetup.create
+    @payroll_period = PayrollPeriod.new(2014, 1, 'January 2014')
+  end
+
+  it 'INSURANCE_SOCIAL should be round UP to 1 CZK' do
     factors_init = Hash.new
     factors_vals = {amount: 0}
     article_part = TermParty.get_empty
