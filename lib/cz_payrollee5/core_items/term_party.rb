@@ -61,7 +61,7 @@ module CzPayrollee5
           @position_order <=> other.position_order
         end
       else
-        @contract_order <=> other.code
+        @contract_order <=> other.contract_order
       end
     end
 
